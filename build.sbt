@@ -4,10 +4,10 @@ name := "sbt-sct"
 
 organization := "com.github.bzumhagen"
 
-version := "0.2.0"
+version := "0.3.0"
 
 libraryDependencies ++= Seq(
-  "com.github.bzumhagen" %% "sct" % "0.8.1"
+  "com.github.bzumhagen" %% "sct" % "0.9.0"
 )
 
 pgpSecretRing := file("local.secring.asc")
