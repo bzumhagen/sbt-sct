@@ -4,7 +4,7 @@ name := "sbt-sct"
 
 organization := "com.github.bzumhagen"
 
-version := "0.4.0"
+version := "0.5.0"
 
 crossScalaVersions := Seq("2.10.6", "2.12.4")
 
@@ -17,7 +17,7 @@ scalaCompilerBridgeSource := {
 
 
 libraryDependencies ++= Seq(
-  "com.github.bzumhagen" %% "sct" % "0.10.0"
+  "com.github.bzumhagen" %% "sct" % "0.11.0"
 )
 
 pgpSecretRing := file("local.secring.asc")
