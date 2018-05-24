@@ -16,20 +16,19 @@ object SctPlugin extends AutoPlugin {
 
   override def trigger: PluginTrigger = allRequirements
 
-  override lazy val buildSettings = Seq(
-    sctConfigPath := "",
+  override lazy val projectSettings = Seq(
+    sctConfigPath := "changelog.conf",
     changelog := changelogTask.evaluated
   )
 
   lazy val changelogTask: Def.Initialize[InputTask[Unit]] =
     Def.inputTask {
       val args: Seq[String] = spaceDelimited("<arg>").parsed
-      val path = if (sctConfigPath.value.nonEmpty) sctConfigPath.value else "changelog.conf"
 
       if (args.nonEmpty) {
-        BuildChangelog.main(Array("-r", baseDirectory.value.getAbsolutePath, "-c", path, "-v", args.head))
+        BuildChangelog.main(Array("-r", baseDirectory.value.getAbsolutePath, "-c", sctConfigPath.value, "-v", args.head))
       } else {
-        BuildChangelog.main(Array("-r", baseDirectory.value.getAbsolutePath, "-c", path))
+        BuildChangelog.main(Array("-r", baseDirectory.value.getAbsolutePath, "-c", sctConfigPath.value))
       }
     }
 }
