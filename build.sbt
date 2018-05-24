@@ -4,10 +4,20 @@ name := "sbt-sct"
 
 organization := "com.github.bzumhagen"
 
-version := "0.3.0"
+version := "0.4.0"
+
+crossScalaVersions := Seq("2.10.6", "2.12.4")
+
+crossSbtVersions := Seq("0.13.17", "1.1.5")
+
+scalaCompilerBridgeSource := {
+  val sv = appConfiguration.value.provider.id.version
+  ("org.scala-sbt" % "compiler-interface" % sv % "component").sources
+}
+
 
 libraryDependencies ++= Seq(
-  "com.github.bzumhagen" %% "sct" % "0.9.0"
+  "com.github.bzumhagen" %% "sct" % "0.10.0"
 )
 
 pgpSecretRing := file("local.secring.asc")
